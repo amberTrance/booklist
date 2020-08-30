@@ -9,7 +9,16 @@ use App\User;
 use App\Category;
 
 class BooksController extends Controller
-{
+{   
+    
+    public $bookRequirements = [
+        'title' => 'required',
+        'author' => 'required',
+        'description' => 'required',
+        'cover_image' => 'image|nullable|max:1999',
+        'category_id' => 'required'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +35,7 @@ class BooksController extends Controller
         
         // Filters the books by user and category
         if (!empty($category_ids)) {
-            $books = Book::where('user_id','=', $user_id)->whereIn('category_id', $category_ids)->sortByDesc('updated_at')->get();
+            $books = Book::where('user_id','=', $user_id)->whereIn('category_id', $category_ids)->get()->sortByDesc('updated_at');
         } else {
             $books = Book::where('user_id','=', $user_id)->get()->sortByDesc('updated_at');
         }
@@ -54,14 +63,8 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate and save logic from "Add New" form + redirect
-        $this->validate($request, [
-            'title' => 'required',
-            'author' => 'required',
-            'description' => 'required',
-            'cover_image' => 'image|nullable|max:1999',
-            'category_id' => 'required'
-        ]);
+        // Validate and save logic from  form + redirect
+        $this->validate($request, $this->bookRequirements);
 
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
@@ -138,13 +141,7 @@ class BooksController extends Controller
     public function update(Request $request, $id)
     {
         // Validate and save logic from "Edit" form + redirect
-        $this->validate($request, [
-            'title' => 'required',
-            'author' => 'required',
-            'description' => 'required',
-            'cover_image' => 'image|nullable|max:1999',
-            'category_id' => 'required'
-        ]);
+        $this->validate($request, $this->bookRequirements);
 
         // Handle File Upload
         if ($request->hasFile('cover_image')) {

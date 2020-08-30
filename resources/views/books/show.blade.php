@@ -28,7 +28,7 @@
         <!-- Book image -->
         <img src="/storage/cover_images/{{ $book->cover_image }}" alt="an image" class="mx-auto">
         <!-- Buttons group -->
-        <div class="btn-group mx-auto" style="padding:20px">
+        <div class="mx-auto" style="padding:20px">
             <!-- Go back button -->
             <a href="/books" class="btn btn-success" role="button">Go back</a>
             <!-- Edit book button -->
@@ -36,7 +36,7 @@
                 Edit Book Details
             </a>
             <!-- Delete book form -->
-            <form action="/books/{{ $book->id }}" method="POST">
+            <form action="/books/{{ $book->id }}" method="POST" style="display:inline">
                 @csrf
                 @method('DELETE')
                 <!-- Delete button -->

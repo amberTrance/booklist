@@ -36,7 +36,7 @@
                 </div>
             </div>    
             <!-- Submit categories button -->
-            <button type="submit" class="btn btn-secondary">Submit categories</button>
+            <button type="submit" class="btn btn-secondary" style="margin-bottom:20px">Submit categories</button>
         </form>
 
         <div style="display:inline-block; float:right; text-align:right">

@@ -34,11 +34,11 @@
         <!-- Radio-buttons for read status -->
         <label for="is_read" style="margin-top:20px">Read</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="is_read" id="yes" value="1" checked>
+            <input class="form-check-input" type="radio" name="is_read" id="yes" value="1">
             <label class="form-check-label" for="yes">Yes</label>
         </div>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="is_read" id="no" value="0">
+            <input class="form-check-input" type="radio" name="is_read" id="no" value="0" checked>
             <label class="form-check-label" for="no">No</label>
         </div>
         <!-- Upload image input field -->
