@@ -3,7 +3,7 @@
 @section('content')
     <!-- Create book form -->
     <form action="/books" method="POST" enctype="multipart/form-data" 
-    style="max-width:800px; margin-top:50px" class="mx-auto">
+    class="mx-auto mt-3" style="max-width:50rem">
         @csrf
         <!-- Author -->
         <div class="form-group ">
@@ -32,7 +32,7 @@
             @endforeach
         </select>
         <!-- Radio-buttons for read status -->
-        <label for="is_read" style="margin-top:20px">Read</label>
+        <label for="is_read" class="mt-3">Read</label>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="is_read" id="yes" value="1">
             <label class="form-check-label" for="yes">Yes</label>
@@ -42,15 +42,15 @@
             <label class="form-check-label" for="no">No</label>
         </div>
         <!-- Upload image input field -->
-        <div style="margin-top:20px;">
+        <div class="mt-3">
             <label for="cover_image">Select an image for your book</label></br>
             <input type="file" id="cover_image" name="cover_image">
         </div>
         <!-- Submit book button -->
-        <button type="submit" class="btn btn-dark" style="margin:20px 20px 20px 0px;">
+        <button type="submit" class="btn btn-dark mt-3">
             Submit Book
         </button>
         <!-- Go back button -->
-        <a href="/books" class="btn btn-secondary">Go back</a>
+        <a href="/books" class="btn btn-secondary mt-3">Go back</a>
     </form>
 @endsection

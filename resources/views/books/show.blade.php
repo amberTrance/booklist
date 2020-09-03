@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Card book display -->
-    <div class="card border-success mx-auto" style="max-width:50rem; margin:20px;">
+    <div class="card border-success mx-auto m-3" style="max-width:50rem">
         <!-- Author -->
         <h5 class="card-header text-white bg-success">
             <i>Author: {{ $book->author }}</i>
@@ -28,7 +28,7 @@
         <!-- Book image -->
         <img src="/storage/cover_images/{{ $book->cover_image }}" alt="an image" class="mx-auto">
         <!-- Buttons group -->
-        <div class="mx-auto" style="padding:20px">
+        <div class="mx-auto p-3">
             <!-- Go back button -->
             <a href="/books" class="btn btn-success" role="button">Go back</a>
             <!-- Edit book button -->
@@ -36,7 +36,7 @@
                 Edit Book Details
             </a>
             <!-- Delete book form -->
-            <form action="/books/{{ $book->id }}" method="POST" style="display:inline">
+            <form action="/books/{{ $book->id }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
                 <!-- Delete button -->

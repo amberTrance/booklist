@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Books list -->
-    <div style="margin:50px">
+    <div class="container">
         <!-- Flash message -->
         @if ($flash = session('message'))
         <h4 class="alert alert-success role="alert">
@@ -15,36 +15,38 @@
         @endif
 
         <!-- Submit selected categories form -->
-        <form action="/books" method="GET" style="display:inline-block">
-            @csrf
-            <div class="form-group">
-                <h4>Select category:</h4>
-                <!-- List book categories -->
-                <div class="form-check" >
-                    @foreach ($categories as $category)
-                        @if (!empty($category_ids) && in_array($category->id, $category_ids))
-                            <input class="form-check-input" type="checkbox" id="{{ $category->name }}" 
-                            name="category_id[]" value="{{ $category->id }}" checked>
-                        @else
-                            <input class="form-check-input" type="checkbox" id="{{ $category->name }}" 
-                            name="category_id[]" value="{{ $category->id }}">
-                        @endif                  
-                        <label class="form-check-label" for="{{ $category->name }}">
-                            {{ $category->name }}
-                        </label></br>
-                    @endforeach
+        <div class="row">
+            
+            <div class="col-md-6 mt-3">
+                <h1>My Books</h1>
+                <!-- Add new book button -->
+                <div>
+                    <a href="books/create" class="btn btn-secondary">Add New Book</a>
                 </div>
-            </div>    
-            <!-- Submit categories button -->
-            <button type="submit" class="btn btn-secondary" style="margin-bottom:20px">Submit categories</button>
-        </form>
-
-        <div style="display:inline-block; float:right; text-align:right">
-            <h1>My Books</h1>
-            <!-- Add new book button -->
-            <div>
-                <a href="books/create" class="btn btn-secondary">Add New Book</a>
             </div>
+            <form action="/books" method="GET" class="col-md-6 ">
+                @csrf
+                <div class="form-group mt-3 float-right">
+                    <h4>Select category:</h4>
+                    <!-- List book categories -->
+                    <div class="form-check" >
+                        @foreach ($categories as $category)
+                            @if (!empty($category_ids) && in_array($category->id, $category_ids))
+                                <input class="form-check-input" type="checkbox" id="{{ $category->name }}" 
+                                name="category_id[]" value="{{ $category->id }}" checked>
+                            @else
+                                <input class="form-check-input" type="checkbox" id="{{ $category->name }}" 
+                                name="category_id[]" value="{{ $category->id }}">
+                            @endif                  
+                            <label class="form-check-label" for="{{ $category->name }}">
+                                {{ $category->name }}
+                            </label></br>
+                        @endforeach
+                    </div>
+                    <!-- Submit categories button -->
+                    <button type="submit" class="btn btn-secondary mt-3">Submit categories</button>    
+                </div>    
+            </form>
         </div>
 
         <!-- Book list -->
@@ -52,9 +54,9 @@
             @foreach ($books as $book)
                 <!-- Book title, author, genre, and created at -->
                 @if ($book->is_read == 1)
-                    <li class="list-group-item" style="padding: 20px; background-color:#9effbe">
+                    <li class="list-group-item p-4" style="background-color:#9effbe">
                 @else
-                    <li class="list-group-item" style="padding: 20px; background-color:#f8fca7">
+                    <li class="list-group-item p-4" style="background-color:#f8fca7">
                 @endif
                 <!-- book image -->
                 @if ($book->cover_image != 'noimage.png')
@@ -62,22 +64,22 @@
                     style="float:right; border:solid 10px white">
                 @endif
                 
-                <h5 style="display:inline-block; padding:5px">
-                    <a href="books/{{ $book->id }}" style="text-decoration:none">Title: {{ $book->title }}</a>
+                <h5 class="d-inline-block p-2">
+                    <a href="books/{{ $book->id }}" class="text-decoration-none">Title: {{ $book->title }}</a>
                 </h5></br>
-                <h6 style="display:inline-block; padding:5px">Author: {{ $book->author }}</h6></br>
-                <h6 style="display:inline-block; padding:5px">Genre: {{ $book->category->name }} </h6></br>
-                <h6 style="display:inline-block; padding:5px">Created at: {{ $book->created_at }}</h6></br>
+                <h6 class="d-inline-block p-2">Author: {{ $book->author }}</h6></br>
+                <h6 class="d-inline-block p-2">Genre: {{ $book->category->name }} </h6></br>
+                <h6 class="d-inline-block p-2">Created at: {{ $book->created_at }}</h6></br>
                 <!-- Edit book button -->
-                <a href="books/{{ $book->id }}/edit" style="margin:5px" class="btn btn-outline-secondary">
+                <a href="books/{{ $book->id }}/edit" class="btn btn-outline-secondary m-2 p-2">
                     Edit Book Details
                 </a>
                 <!-- Delete form -->
-                <form action="/books/{{ $book->id }}" method="POST" style="display:inline-block">
+                <form action="/books/{{ $book->id }}" method="POST" class="d-inline-block p-2">
                     @csrf
                     @method('DELETE')
                     <!-- Delete button -->
-                    <button class="btn btn-dark" style="margin:5px">Delete</button>
+                    <button class="btn btn-dark">Delete</button>
                 </form>
             @endforeach
         </ul>      

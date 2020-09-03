@@ -4,10 +4,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" style="margin-right: 20px">
+                <li class="nav-item active mr-3">
                     <a class="nav-link" href="/">Reader Journal</a>
                 </li>
-                <li class="nav-item active" style="margin-right: 20px">
+                <li class="nav-item active mr-3">
                     <a class="nav-link" href="/books">My Books</a>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
                                 </form>
                             </div>
