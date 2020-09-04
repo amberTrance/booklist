@@ -14,16 +14,15 @@
             <h4 class="alert alert-info" role="alert">No books have been found</h4>
         @endif
 
-        <!-- Submit selected categories form -->
-        <div class="row">
-            
+        <div class="row">          
             <div class="col-md-6 mt-3">
                 <h1>My Books</h1>
                 <!-- Add new book button -->
                 <div>
                     <a href="books/create" class="btn btn-secondary">Add New Book</a>
                 </div>
-            </div>
+            </div>            
+            <!-- Filter selected categories form -->
             <form action="/books" method="GET" class="col-md-6 ">
                 @csrf
                 <div class="form-group mt-3 float-right">
@@ -44,7 +43,7 @@
                         @endforeach
                     </div>
                     <!-- Submit categories button -->
-                    <button type="submit" class="btn btn-secondary mt-3">Submit categories</button>    
+                    <button type="submit" class="btn btn-secondary mt-3">Filter categories</button>    
                 </div>    
             </form>
         </div>

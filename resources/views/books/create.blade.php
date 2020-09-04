@@ -18,8 +18,7 @@
         <!-- Description -->
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required>
-            </textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
         </div>
         <!-- Select field with book category -->
         <select class="browser-default custom-select" name="category_id" required>
